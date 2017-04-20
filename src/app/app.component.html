@@ -1,3 +1,38 @@
 <h1>
-  {{title}}
+    界面
 </h1>
+<label>搜索</label><input #searchInput [(ngModel)]="keyword">
+
+<table>
+    <thead>
+        <td>课程</td>
+        <td>序号/原链接</td>
+        <td>章节</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let subject of (subjects | keyword:keyword)">
+            <td> {{subject.title}}</td>
+            <td>{{subject.no.split('/').pop()}}</td>
+            <td>
+                <tr *ngFor="let capter of  subject.capters">
+
+
+                    <div class="btn-group" dropdown>
+                        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+        {{capter.title}} <span class="caret"></span>
+      </button>
+                        <ul *dropdownMenu class="dropdown-menu" role="menu">
+
+
+                            <li class="menuitem" *ngFor="let video of capter.videos">
+                                <a class="dropdown-item" href="{{video.mediaInfo.data.result.mpath[0]}}" taget="_blank">{{ video.name}}</a> </li>
+
+                        </ul>
+                    </div>
+
+                </tr>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

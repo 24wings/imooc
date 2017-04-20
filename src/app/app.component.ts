@@ -12,7 +12,7 @@ export class AppComponent {
   subjects: Subject[] = [];
   keyword = "";
   constructor(public http: Http) {
-    this.http.get('/assets/subjects.json').subscribe(rtn => {
+    this.http.get('./assets/subjects.json').subscribe(rtn => {
       this.subjects = rtn.json();
 
     });

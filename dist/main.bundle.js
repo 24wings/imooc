@@ -1129,7 +1129,7 @@ var AppComponent = (function () {
         this.title = 'app works!';
         this.subjects = [];
         this.keyword = "";
-        this.http.get('/assets/subjects.json').subscribe(function (rtn) {
+        this.http.get('./assets/subjects.json').subscribe(function (rtn) {
             _this.subjects = rtn.json();
         });
     }
